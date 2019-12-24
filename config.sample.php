@@ -11,4 +11,5 @@ define('DEFAULT_USERNAME', 'user'); // max length of 250 characters
 define('DEFAULT_PASSWORD', 'password'); // max length of 250 characters
 
 define('APPLICATION_NAME', 'Garnet DeGelder\'s Score Tracker');
+define('APPLICATION_VERSION', '2.0.0-dev');
 define('APPLICATION_COPYRIGHT_HTML', 'Copyright &copy; 2019 Garnet DeGelder');
