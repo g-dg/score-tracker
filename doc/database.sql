@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS "club_participation";
 DROP TABLE IF EXISTS "competitions";
 DROP TABLE IF EXISTS "years";
 DROP TABLE IF EXISTS "clubs";
-DROP TABLE IF EXISTS "auth_tokens";
+DROP TABLE IF EXISTS "api_tokens";
 DROP TABLE IF EXISTS "users";
 
 CREATE TABLE "users" (
@@ -23,7 +23,7 @@ CREATE TABLE "users" (
 	"enabled" INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE TABLE "auth_tokens" (
+CREATE TABLE "api_tokens" (
 	"id" INTEGER PRIMARY KEY,
 	"token" TEXT NOT NULL UNIQUE,
 	"user_id" INTEGER NOT NULL REFERENCES "users" ON DELETE CASCADE,
