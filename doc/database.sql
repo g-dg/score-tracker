@@ -19,7 +19,8 @@ CREATE TABLE "users" (
 	"id" INTEGER PRIMARY KEY,
 	"username" TEXT NOT NULL UNIQUE,
 	"password" TEXT NOT NULL,
-	"type" TEXT NOT NULL DEFAULT 'user' -- administrator, user, read-only
+	"type" TEXT NOT NULL DEFAULT 'user', -- administrator, user, read-only
+	"enabled" INTEGER NOT NULL DEFAULT 1
 );
 
 CREATE TABLE "auth_tokens" (
