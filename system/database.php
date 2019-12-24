@@ -36,7 +36,7 @@ if (count(database_query('SELECT "name" FROM "sqlite_master" WHERE "type" = "tab
 // check if there is at least one user
 $database_connection->beginTransaction();
 if ((int)database_query('SELECT COUNT() FROM "users";')[0][0] < 1) {
-	database_query('INSERT INTO "users"("name","password")VALUES(?,?);', [DEFAULT_USERNAME, password_hash(DEFAULT_PASSWORD, PASSWORD_DEFAULT)]);
+	database_query('INSERT INTO "users"("username","password","type")VALUES(?,?,\'administrator\');', [DEFAULT_USERNAME, password_hash(DEFAULT_PASSWORD, PASSWORD_DEFAULT)]);
 }
 $database_connection->commit();
 
