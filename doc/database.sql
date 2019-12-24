@@ -12,13 +12,21 @@ DROP TABLE IF EXISTS "club_participation";
 DROP TABLE IF EXISTS "competitions";
 DROP TABLE IF EXISTS "years";
 DROP TABLE IF EXISTS "clubs";
+DROP TABLE IF EXISTS "auth_tokens";
 DROP TABLE IF EXISTS "users";
 
 CREATE TABLE "users" (
 	"id" INTEGER PRIMARY KEY,
 	"username" TEXT NOT NULL UNIQUE,
 	"password" TEXT NOT NULL,
-	"type" TEXT NOT NULL DEFAULT "user" -- administrator, user, read-only
+	"type" TEXT NOT NULL DEFAULT 'user' -- administrator, user, read-only
+);
+
+CREATE TABLE "auth_tokens" (
+	"id" INTEGER PRIMARY KEY,
+	"token" TEXT NOT NULL UNIQUE,
+	"user_id" INTEGER NOT NULL REFERENCES "users" ON DELETE CASCADE,
+	"expires" INTEGER NOT NULL DEFAULT (STRFTIME('%s', 'now') + 3600)
 );
 
 CREATE TABLE "clubs" (
@@ -55,7 +63,7 @@ CREATE TABLE "events" (
 	"id" INTEGER PRIMARY KEY,
 	"name" TEXT NOT NULL,
 	"competition_id" INTEGER NOT NULL REFERENCES "competitions",
-	"type" TEXT NOT NULL DEFAULT "points", -- points, timed, individual
+	"type" TEXT NOT NULL DEFAULT 'points', -- points, timed, individual
 	"overall_point_multiplier" REAL NOT NULL DEFAULT 1.0,
 	"timed_min_time" REAL NOT NULL,
 	"timed_max_time" REAL NOT NULL,
