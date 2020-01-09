@@ -2,7 +2,7 @@
 
 define('API_TOKEN_LIFETIME', 3600);
 
-require_once('config.php');
+require_once('system/config.php');
 require_once('system/session.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['password'], $_POST['csrf_token']) && $_POST['csrf_token'] == $_SESSION['scoretracker.csrf_token']) {

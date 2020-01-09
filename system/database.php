@@ -1,6 +1,6 @@
 <?php
 
-require_once('config.php');
+require_once('system/config.php');
 
 // check if the database is accessible
 if (!is_file(DATABASE_FILE) ||
